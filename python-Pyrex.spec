@@ -7,7 +7,6 @@ License:	GPL
 Group:		Libraries/Python
 Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/Pyrex-%{version}.tar.gz
 # Source0-md5:	99ae698c3f308d0d1eff1078ac87d459
-Patch0:		%{name}-compile.patch
 URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -23,7 +22,6 @@ w jakikolwiek sposób i kompiluje to jako rozszerzenie C dla Pythona.
 
 %prep
 %setup -q -n Pyrex-%{version}
-%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
