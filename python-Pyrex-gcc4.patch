@@ -1,0 +1,57 @@
+diff -ur Pyrex-0.9.3.orig/Pyrex/Compiler/Code.py Pyrex-0.9.3/Pyrex/Compiler/Code.py
+--- Pyrex-0.9.3.orig/Pyrex/Compiler/Code.py	2003-07-08 10:31:27.000000000 +0200
++++ Pyrex-0.9.3/Pyrex/Compiler/Code.py	2005-04-29 11:30:12.000000000 +0200
+@@ -219,12 +219,10 @@
+             self.put_var_xdecref_clear(entry)
+     
+     def put_init_to_py_none(self, cname):
+-        self.putln("%s = Py_None; Py_INCREF(%s);" % (cname, cname))
++        self.putln("%s = Py_None; Py_INCREF((PyObject *)%s);" % (cname, cname))
+     
+     def put_init_var_to_py_none(self, entry, template = "%s"):
+         code = template % entry.cname
+-        if entry.type.is_extension_type:
+-            code = "((PyObject*)%s)" % code
+         self.put_init_to_py_none(code)
+ 
+     def put_pymethoddef(self, entry, term):
+diff -ur Pyrex-0.9.3.orig/Pyrex/Compiler/ExprNodes.py Pyrex-0.9.3/Pyrex/Compiler/ExprNodes.py
+--- Pyrex-0.9.3.orig/Pyrex/Compiler/ExprNodes.py	2004-05-01 12:15:07.000000000 +0200
++++ Pyrex-0.9.3/Pyrex/Compiler/ExprNodes.py	2005-04-29 11:49:32.425987800 +0200
+@@ -806,7 +806,7 @@
+             if self.type.is_pyobject:
+                 rhs.make_owned_reference(code)
+                 code.put_decref(self.result, self.type)
+-            code.putln('%s = %s;' % (self.result, rhs.result))
++            code.putln('%s = %s;' % (self.entry.cname, rhs.result))
+             if debug_disposal_code:
+                 print "NameNode.generate_assignment_code:"
+                 print "...generating post-assignment code for", rhs
+Tylko w Pyrex-0.9.3/Pyrex/Compiler: ExprNodes.py~
+diff -ur Pyrex-0.9.3.orig/Pyrex/Compiler/Nodes.py Pyrex-0.9.3/Pyrex/Compiler/Nodes.py
+--- Pyrex-0.9.3.orig/Pyrex/Compiler/Nodes.py	2004-07-11 09:26:29.000000000 +0200
++++ Pyrex-0.9.3/Pyrex/Compiler/Nodes.py	2005-04-29 11:32:47.000000000 +0200
+@@ -484,8 +484,7 @@
+         self.generate_self_cast(scope, code)
+         type = scope.parent_type
+         if type.vtabslot_cname:
+-            code.putln("(struct %s *)p->%s = %s;" % (
+-                type.vtabstruct_cname,
++            code.putln("p->%s = %s;" % (
+                 type.vtabslot_cname,
+                 type.vtabptr_cname))
+         for entry in scope.var_entries:
+@@ -1684,11 +1683,7 @@
+         # ----- Default return value
+         code.putln("")
+         if self.return_type.is_pyobject:
+-            if self.return_type.is_extension_type:
+-                lhs = "(PyObject *)%s" % Naming.retval_cname
+-            else:
+-                lhs = Naming.retval_cname
+-            code.put_init_to_py_none(lhs)
++            code.put_init_to_py_none(Naming.retval_cname)
+         else:
+             val = self.return_type.default_value
+             if val:
+Tylko w Pyrex-0.9.3/Pyrex/Compiler: Nodes.py~
