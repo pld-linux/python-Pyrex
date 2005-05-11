@@ -12,7 +12,6 @@ Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version
 # Source0-md5:	63c4cb884d6b777d3806f9669ba5feba
 Patch0:         %{name}-py24-swig_sources.patch
 Patch1:		%{name}-gcc4.patch
-
 URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
 BuildRequires:	python
 %pyrequires_eq	python-libs
