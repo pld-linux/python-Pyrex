@@ -10,8 +10,6 @@ License:	free
 Group:		Libraries/Python
 Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
 # Source0-md5:	0415b95a023061679021323d9ce56fe0
-# Patch0:         %{name}-py24-swig_sources.patch
-# Patch1:	  %{name}-gcc4.patch
 URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
 BuildRequires:	python
 %pyrequires_eq	python-libs
@@ -41,8 +39,6 @@ Pakiet zawieraj±cy przyk³adowe programy napisane w jêzyku Pyrex.
 
 %prep
 %setup -q -n %{module}-%{version}
-#%%patch0 -p1
-#%%patch1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
