@@ -4,14 +4,12 @@
 Summary:	Language for writing Python Extension Modules
 Summary(pl):	Jêzyk s³u¿±cy do pisania modu³ów rozszerzaj±cych Pythona
 Name:		python-%{module}
-Version:	0.9.3
-Release:	5
+Version:	0.9.4.1
+Release:	1
 License:	free
 Group:		Libraries/Python
 Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
-# Source0-md5:	63c4cb884d6b777d3806f9669ba5feba
-Patch0:         %{name}-py24-swig_sources.patch
-
+# Source0-md5:	425f0543c634bc7a86fe4fce02e0e882
 URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
 BuildRequires:	python
 %pyrequires_eq	python-libs
@@ -41,19 +39,18 @@ Pakiet zawieraj±cy przyk³adowe programy napisane w jêzyku Pyrex.
 
 %prep
 %setup -q -n %{module}-%{version}
-%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT{%{py_sitedir},%{_examplesdir}/%{name}-%{version}}
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__python} setup.py install \
 	--root=$RPM_BUILD_ROOT \
-	--install-purelib=%{py_sitedir} \
+	--install-purelib=%{py_sitescriptdir} \
 	-O2
 
-find $RPM_BUILD_ROOT%{py_sitedir} -name "*.py" -a ! -name 'Lexicon.py' -exec rm -f {} \;
+find $RPM_BUILD_ROOT%{py_sitescriptdir} -name "*.py" -a  -exec rm -f {} \;
 
 cp -ar Demos/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -64,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES.txt README.txt ToDo.txt USAGE.txt Doc/*.html Doc/*.c
 %attr(755,root,root) %{_bindir}/*
-%{py_sitedir}/*
+%{py_sitescriptdir}/*
 
 %files examples
 %defattr(644,root,root,755)
