@@ -4,12 +4,13 @@
 Summary:	Language for writing Python Extension Modules
 Summary(pl):	Jêzyk s³u¿±cy do pisania modu³ów rozszerzaj±cych Pythona
 Name:		python-%{module}
-Version:	0.9.4.1
-Release:	5
+Version:	0.9.4.2
+Release:	0.20061205.1
 License:	free
 Group:		Libraries/Python
-Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
-# Source0-md5:	425f0543c634bc7a86fe4fce02e0e882
+#Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
+Source0:	%{module}-%{version}.tar.gz
+# Source0-md5:	9335027ecbcd4af3b070f08584cc37ff
 URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
