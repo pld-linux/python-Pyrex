@@ -2,7 +2,7 @@
 %define		module	Pyrex
 
 Summary:	Language for writing Python Extension Modules
-Summary(pl):	Jêzyk s³u¿±cy do pisania modu³ów rozszerzaj±cych Pythona
+Summary(pl.UTF-8):   JÄ™zyk sÅ‚uÅ¼Ä…cy do pisania moduÅ‚Ã³w rozszerzajÄ…cych Pythona
 Name:		python-%{module}
 Version:	0.9.4.2
 Release:	0.20061205.1
@@ -24,21 +24,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Pyrex lets you write code that mixes Python and C data types any way
 you want, and compiles it into a C extension for Python.
 
-%description -l pl
-Pyrex pozwala pisaæ kod zawieraj±cy dane Pythona i jêzyka C po³±czone
-w jakikolwiek sposób i kompiluje to jako rozszerzenie C dla Pythona.
+%description -l pl.UTF-8
+Pyrex pozwala pisaÄ‡ kod zawierajÄ…cy dane Pythona i jÄ™zyka C poÅ‚Ä…czone
+w jakikolwiek sposÃ³b i kompiluje to jako rozszerzenie C dla Pythona.
 
 %package examples
 Summary:	Examples for Pyrex language
-Summary(pl):	Przyk³ady programów w jêzyku Pyrex
+Summary(pl.UTF-8):   PrzykÅ‚ady programÃ³w w jÄ™zyku Pyrex
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
 %description examples
 This package contains example programs for Pyrex language.
 
-%description examples -l pl
-Pakiet zawieraj±cy przyk³adowe programy napisane w jêzyku Pyrex.
+%description examples -l pl.UTF-8
+Pakiet zawierajÄ…cy przykÅ‚adowe programy napisane w jÄ™zyku Pyrex.
 
 %prep
 %setup -q -n %{module}-%{version}
