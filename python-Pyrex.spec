@@ -2,7 +2,7 @@
 %define		module	Pyrex
 
 Summary:	Language for writing Python Extension Modules
-Summary(pl.UTF-8):   Język służący do pisania modułów rozszerzających Pythona
+Summary(pl.UTF-8):	Język służący do pisania modułów rozszerzających Pythona
 Name:		python-%{module}
 Version:	0.9.4.2
 Release:	0.20061205.1
@@ -30,7 +30,7 @@ w jakikolwiek sposób i kompiluje to jako rozszerzenie C dla Pythona.
 
 %package examples
 Summary:	Examples for Pyrex language
-Summary(pl.UTF-8):   Przykłady programów w języku Pyrex
+Summary(pl.UTF-8):	Przykłady programów w języku Pyrex
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 
