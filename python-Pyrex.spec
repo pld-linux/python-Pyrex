@@ -4,15 +4,14 @@
 Summary:	Language for writing Python Extension Modules
 Summary(pl.UTF-8):	Język służący do pisania modułów rozszerzających Pythona
 Name:		python-%{module}
-Version:	0.9.4.2
-Release:	0.20061205.1
+Version:	0.9.5.1a
+Release:	1
 License:	free
 Group:		Libraries/Python
-#Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
-Source0:	%{module}-%{version}.tar.gz
-# Source0-md5:	9335027ecbcd4af3b070f08584cc37ff
+Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
+# Source0-md5:	0132c5cd2f8685e4948fb14dcb65f637
 URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
-BuildRequires:	python
+BuildRequires:	python >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
 %pyrequires_eq	python-devel
@@ -45,7 +44,6 @@ Pakiet zawierający przykładowe programy napisane w języku Pyrex.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__python} setup.py install \
@@ -64,8 +62,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES.txt README.txt ToDo.txt USAGE.txt Doc/*.html Doc/*.c
 %attr(755,root,root) %{_bindir}/*
-%{py_sitescriptdir}/*
-
+%{py_sitescriptdir}/Pyrex
+%{py_sitescriptdir}/Pyrex-*.egg-info
 
 %files examples
 %defattr(644,root,root,755)
