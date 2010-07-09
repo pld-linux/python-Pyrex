@@ -1,11 +1,9 @@
-
 %define		module	Pyrex
-
 Summary:	Language for writing Python Extension Modules
 Summary(pl.UTF-8):	Język służący do pisania modułów rozszerzających Pythona
 Name:		python-%{module}
 Version:	0.9.8.5
-Release:	3
+Release:	4
 License:	free
 Group:		Libraries/Python
 Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
@@ -45,11 +43,10 @@ Pakiet zawierający przykładowe programy napisane w języku Pyrex.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-
 %{__python} setup.py install \
+	--optimize=2 \
 	--root=$RPM_BUILD_ROOT \
-	--install-purelib=%{py_sitescriptdir} \
-	-O2
+	--install-purelib=%{py_sitescriptdir}
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -name "*.py" -a ! -name 'Lexicon.py' -exec rm -f {} \;
 
