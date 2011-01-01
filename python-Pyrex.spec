@@ -2,13 +2,13 @@
 Summary:	Language for writing Python Extension Modules
 Summary(pl.UTF-8):	Język służący do pisania modułów rozszerzających Pythona
 Name:		python-%{module}
-Version:	0.9.8.5
-Release:	5
-License:	free
+Version:	0.9.9
+Release:	1
+License:	Apache v2.0
 Group:		Libraries/Python
-Source0:	http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/%{module}-%{version}.tar.gz
-# Source0-md5:	3b3d8397c2c9a58fc59a90e2b49c651a
-URL:		http://www.cosc.canterbury.ac.nz/~greg/python/Pyrex/
+Source0:	http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/%{module}-%{version}.tar.gz
+# Source0-md5:	515dee67d15d4393841e2d60e8341947
+URL:		http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/
 BuildRequires:	python >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES.txt README.txt ToDo.txt USAGE.txt Doc/*.html Doc/*.c
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/pyrexc
 %{py_sitescriptdir}/Pyrex
 %{py_sitescriptdir}/Pyrex-*.egg-info
 
