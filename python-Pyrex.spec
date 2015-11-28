@@ -43,9 +43,7 @@ Pakiet zawierający przykładowe programy napisane w języku Pyrex.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-%{__python} setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT \
+%py_install \
 	--install-purelib=%{py_sitescriptdir}
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -name "*.py" -a ! -name 'Lexicon.py' -exec rm -f {} \;
