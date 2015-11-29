@@ -9,6 +9,7 @@ Group:		Libraries/Python
 Source0:	http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/%{module}-%{version}.tar.gz
 # Source0-md5:	515dee67d15d4393841e2d60e8341947
 URL:		http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
